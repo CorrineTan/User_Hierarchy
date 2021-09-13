@@ -3,7 +3,7 @@
 import copy
 
 
-class UsersHierarchy(object):
+class usersHierarchy(object):
     def __init__(self):
         self.roles = None
         self.users = None
@@ -24,16 +24,14 @@ class UsersHierarchy(object):
                 stack = [role_id]
                 while len(stack) != 0:
                     role_id = stack.pop(0)
-                    # Traversal in reverse order to remove eligible data
                     for i in range(len(roles) - 1, -1, -1):
                         role = roles[i]
                         if role["Parent"] == role_id:
                             stack.append(role["Id"])
                             roles.remove(role)
-                            # Traversal in reverse order to remove eligible data
                             for j in range(len(users) - 1, -1, -1):
                                 user = users[j]
                                 if user["Role"] == role["Id"]:
                                     result.append(user)
                                     users.remove(user)
-    return result
+        return result

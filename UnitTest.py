@@ -1,4 +1,4 @@
-from UsersHierarchy import UsersHierarchy
+from usersHierarchy import usersHierarchy
 import pytest
 
 roles = [
@@ -55,7 +55,7 @@ users = [
         "Role": 5
     }
 ]
-uh = UsersHierarchy()
+uh = usersHierarchy()
 uh.setRoles(roles)
 uh.setUsers(users)
 
@@ -71,4 +71,4 @@ def test_case2():
 
 
 if __name__ == '__main__':
-    pytest.main(['test_getSubOrdinates.py', '-s'])
+    pytest.main(['unitTest.py', '-s'])
