@@ -13,7 +13,7 @@ def load_roles_config(args):
 		with open(config_path) as json_file:
 			roles_config = json.load(json_file)
 	except FileNotFoundError:
-		logging.error(f"\n\nTable config file could not be found: {args.roles}")
+		print(f"\n\nTable config file could not be found: {args.roles}")
 		parser.print_help(sys.stderr)
 		sys.exit(2)
 	return roles_config
@@ -25,7 +25,7 @@ def load_users_config(args):
 		with open(config_path) as json_file:
 			users_config = json.load(json_file)
 	except FileNotFoundError:
-		logging.error(f"\n\nTable config file could not be found: {args.users}")
+		print(f"\n\nTable config file could not be found: {args.users}")
 		parser.print_help(sys.stderr)
 		sys.exit(2)
 	return users_config
@@ -45,15 +45,15 @@ if __name__ == "__main__":
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
-        "-r",
-        "--roles",
-        help="the path to the roles json file",
-    )
+		"-r",
+		"--roles",
+		help="the path to the roles json file",
+	)
 	parser.add_argument(
-        "-u",
-        "--users",
-        help="the path to the users json file",
-    )    
+		"-u",
+		"--users",
+		help="the path to the users json file",
+	)    
 	args = parser.parse_args()
 
 	hierarchy = process(args)

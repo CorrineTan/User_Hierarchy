@@ -2,7 +2,7 @@ import json
 from dataclasses import dataclass
 
 @dataclass
-class Roles:
+class Role:
 	"""
 	A class for Roles
 	"""
@@ -11,35 +11,34 @@ class Roles:
 	name: str
 	parent: int
 
-    def getId(self):
-   		"""
-   		Getter for id
-   		"""
-    	return self.id
+	def getId(self):
+		"""
+		Getter for id
+		"""
+		return self.id
 
 
-   	def getName(self):
-   		"""
-   		Getter for name
-   		"""
-   		return self.name
+	def getName(self):
+		"""
+		Getter for name
+		"""
+		return self.name
 
 
-   	def getParent(self):
-   		"""
-   		Getter for parent
-   		"""
-   		return self.parent
+	def getParent(self):
+		"""
+		Getter for parent
+		"""
+		return self.parent
 
 
-   	def __str__(self):
-   		"""
-   		Overide the output with string json format
-   		"""
-   		output = {
-   			"Id": getId,
-   			"Name": getName,
-   			"Parent": getParent
-   		}
-
-   		return json.dumps(output)
+	def __str__(self):
+		"""
+		Overide the output with string json format
+		"""
+		output = {
+			"Id": self.getId(),
+			"Name": self.getName(),
+			"Parent": self.getParent()
+		}
+		return json.dumps(output)

@@ -12,24 +12,24 @@ class User:
 
 	def getName(self):
 		"""
-   		Getter for name
-   		"""
+		Getter for name
+		"""
 		return self.name
 
 
 	def getRole(self):
 		"""
-   		Getter for role
-   		"""
+		Getter for role
+		"""
 		return self.role
 
 
 	def __str__(self):
 		output = {
-   			"Id": self.getId(),
-   			"Name": self.getName(),
-   			"Role": self.getRole()
-   		}
+			"Id": self.getId(),
+			"Name": self.getName(),
+			"Role": self.getRole()
+		}
 		return json.dumps(output)
 
 
