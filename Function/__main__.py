@@ -1,7 +1,10 @@
-from . import users, roles, usersHierarchy
-import logging
+import user, role, usersHierarchy
+from user import User
+from role import Role
 import json
 from pathlib import Path
+import sys
+import argparse
 
 def load_roles_config(args):
 	roles_config = None
@@ -19,7 +22,7 @@ def load_users_config(args):
 	users_config = None
 	try:
 		config_path = Path(args.users).resolve(strict=True)
-		with open(users_path) as json_file:
+		with open(config_path) as json_file:
 			users_config = json.load(json_file)
 	except FileNotFoundError:
 		logging.error(f"\n\nTable config file could not be found: {args.users}")
@@ -27,28 +30,43 @@ def load_users_config(args):
 		sys.exit(2)
 	return users_config
 
-def main(args):
+def process(args):
 	roles = load_roles_config(args)
-	users = load_roles_config(users)
-	usersHierarchy.Hierarchy.setRoles(roles)
-	usersHierarchy.Hierarchy.setUsers(users)
+	users = load_users_config(args)
+
+	hierarchy = usersHierarchy.Hierarchy()
+
+	hierarchy.setRoles(roles)
+	hierarchy.setUsers(users)
+
+	return hierarchy
 
 if __name__ == "__main__":
+
 	parser = argparse.ArgumentParser()
-    parser.add_argument(
+	parser.add_argument(
         "-r",
         "--roles",
         help="the path to the roles json file",
     )
-    parser.add_argument(
+	parser.add_argument(
         "-u",
         "--users",
         help="the path to the users json file",
     )    
-    args = parser.parse_args()
+	args = parser.parse_args()
 
-	logging.info("Hierarchy for User 3: ")
-	usersHierarchy.Hierarchy.getSubOrdinates(3)
+	hierarchy = process(args)
 
-	logging.info("Hierarchy for User 1: ")
-	usersHierarchy.Hierarchy.getSubOrdinates(1)
+
+	print("Hierarchy for User 3: ")
+	res = hierarchy.getSubOrdinates(3)
+	print(res)
+
+	print("Hierarchy for User 1: ")
+	res = hierarchy.getSubOrdinates(1)
+	print(res)
+
+	print("Hierarchy for User 1: ")
+	res = hierarchy.getSubOrdinates(5)
+	print(res)
