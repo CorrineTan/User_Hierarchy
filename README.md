@@ -17,11 +17,11 @@ python -m pip install -r requirements.txt
 
 3. Run process to load all the tables
 ```sh
-python -m hierarchy -r ./Input/roles.json -u ./Input/users.json
+python -m hierarchy -r Input/roles.json -u Input/users.json
 ```
 4. Test the process to check the logic
 ```sh
-python ./hierarchy/test.py
+python hierarchy/test.py
 ```
 ----
 

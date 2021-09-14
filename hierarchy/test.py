@@ -1,4 +1,4 @@
-from usersHierarchy import Hierarchy
+from . import usersHierarchy
 import pytest
 
 # We skip json files input part, pass the json here directly
@@ -56,7 +56,7 @@ users = [
 		"Role": 5
 	}
 ]
-uh = Hierarchy()
+uh = usersHierarchy.Hierarchy()
 uh.setRoles(roles)
 uh.setUsers(users)
 

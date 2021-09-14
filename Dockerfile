@@ -14,4 +14,4 @@ COPY . /app
 RUN useradd hierarchy && chown -R hierarchy /app
 USER hierarchy
 
-CMD ["python", "-m", "hierarchy",  "-r", "./Input/roles.json", "-u", "./Input/users.json"]
+CMD ["python", "-m", "hierarchy",  "-r", "Input/roles.json", "-u", "Input/users.json"]
