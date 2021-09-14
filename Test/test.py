@@ -1,6 +1,7 @@
 from User_Hierarchy.Function.usersHierarchy import Hierarchy
 import pytest
 
+# We skip json files input part, pass the json here directly
 roles = [
 	{
 		"Id": 1,
@@ -61,12 +62,14 @@ uh.setUsers(users)
 
 def test_case1():
 	got = [{'Id': 5, 'Name': 'Steve Trainer', 'Role': 5}, {'Id': 2, 'Name': 'Emily Employee', 'Role': 4}]
+	# Sort the array to avoid the mismatch of incorrect order 
 	assert (sort(uh.getSubOrdinates(3)) == sort(got))
 
 
 def test_case2():
 	got = [{'Id': 4, 'Name': 'Mary Manager', 'Role': 2}, {'Id': 3, 'Name': 'Sam Supervisor', 'Role': 3},
 		   {'Id': 5, 'Name': 'Steve Trainer', 'Role': 5}, {'Id': 2, 'Name': 'Emily Employee', 'Role': 4}]
+	# Sort the array to avoid the mismatch of incorrect order 
 	assert (sort(uh.getSubOrdinates(1)) == sort(got))
 
 

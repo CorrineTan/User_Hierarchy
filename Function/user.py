@@ -3,12 +3,18 @@ from dataclasses import dataclass
 
 @dataclass
 class User:
+	"""
+	A class for Users
+	"""
+
 	id: int
 	name: str
 	role: int
 
+
 	def getId(self):
 		return self.id
+
 
 	def getName(self):
 		"""
@@ -25,6 +31,9 @@ class User:
 
 
 	def __str__(self):
+		"""
+		Overider the output with string json format
+		"""
 		output = {
 			"Id": self.getId(),
 			"Name": self.getName(),
@@ -33,10 +42,14 @@ class User:
 		return json.dumps(output)
 
 
-	def obj_2_dic(self):
+	def objtToDict(self):
+		"""
+		Convert object to dict
+		"""
 		output = {
 			"Id": self.getId(),
 			"Name": self.getName(),
 			"Role": self.getRole()
 		}
 		return output
+		

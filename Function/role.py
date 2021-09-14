@@ -11,6 +11,7 @@ class Role:
 	name: str
 	parent: int
 
+
 	def getId(self):
 		"""
 		Getter for id
@@ -42,3 +43,4 @@ class Role:
 			"Parent": self.getParent()
 		}
 		return json.dumps(output)
+		

@@ -6,7 +6,10 @@ from pathlib import Path
 import sys
 import argparse
 
-def load_roles_config(args):
+def loadRolesConfig(args):
+	"""
+	Load roles configuration from Input folder
+	"""
 	roles_config = None
 	try:
 		config_path = Path(args.roles).resolve(strict=True)
@@ -18,7 +21,10 @@ def load_roles_config(args):
 		sys.exit(2)
 	return roles_config
 
-def load_users_config(args):
+def loadUsersConfig(args):
+	"""
+	Load users configuration from Input folder
+	"""
 	users_config = None
 	try:
 		config_path = Path(args.users).resolve(strict=True)
@@ -31,8 +37,11 @@ def load_users_config(args):
 	return users_config
 
 def process(args):
-	roles = load_roles_config(args)
-	users = load_users_config(args)
+	"""
+	Instantiate our three classes
+	"""
+	roles = loadRolesConfig(args)
+	users = loadUsersConfig(args)
 
 	hierarchy = usersHierarchy.Hierarchy()
 
@@ -43,6 +52,7 @@ def process(args):
 
 if __name__ == "__main__":
 
+	# Setup argparser to get input from users
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
 		"-r",
@@ -58,7 +68,7 @@ if __name__ == "__main__":
 
 	hierarchy = process(args)
 
-
+	# Simple test here
 	print("Hierarchy for User 3: ")
 	res = hierarchy.getSubOrdinates(3)
 	print(res)
