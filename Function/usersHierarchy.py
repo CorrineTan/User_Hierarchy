@@ -1,20 +1,32 @@
-# use bfs to to solve this problem
-# the eligible roll and user will be removed from the rolls and users, improving program efficiency
-import copy
+from . import roles, users
+import logging
+from dataclassess import dataclass
 
+@dataclass
+class Hierarchy:
+    """
+    A class for setting users hierarchy
+    """
 
-class usersHierarchy(object):
-    def __init__(self):
-        self.roles = None
-        self.users = None
+    roles: roles.Roles
+    users: users.Users
 
     def setRoles(self, roles):
+    """
+    Setters for Roles
+    ""H
         self.roles = roles
 
     def setUsers(self, users):
+    """
+    Setters for Users
+    """
         self.users = users
 
     def getSubOrdinates(self, user_id):
+    """
+    Getter for subordinates for users
+    """
         result = []
         users = copy.deepcopy(self.users)
         roles = copy.deepcopy(self.roles)
