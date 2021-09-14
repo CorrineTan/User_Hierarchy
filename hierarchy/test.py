@@ -1,4 +1,4 @@
-from User_Hierarchy.Function.usersHierarchy import Hierarchy
+from usersHierarchy import Hierarchy
 import pytest
 
 # We skip json files input part, pass the json here directly
@@ -63,15 +63,15 @@ uh.setUsers(users)
 def test_case1():
 	got = [{'Id': 5, 'Name': 'Steve Trainer', 'Role': 5}, {'Id': 2, 'Name': 'Emily Employee', 'Role': 4}]
 	# Sort the array to avoid the mismatch of incorrect order 
-	assert (sort(uh.getSubOrdinates(3)) == sort(got))
+	assert (sorted(uh.getSubOrdinates(3), key = lambda i: i['Id']) == sorted(got, key = lambda i: i['Id']))
 
 
 def test_case2():
 	got = [{'Id': 4, 'Name': 'Mary Manager', 'Role': 2}, {'Id': 3, 'Name': 'Sam Supervisor', 'Role': 3},
 		   {'Id': 5, 'Name': 'Steve Trainer', 'Role': 5}, {'Id': 2, 'Name': 'Emily Employee', 'Role': 4}]
 	# Sort the array to avoid the mismatch of incorrect order 
-	assert (sort(uh.getSubOrdinates(1)) == sort(got))
+	assert (sorted(uh.getSubOrdinates(1), key = lambda i: i['Id']) == sorted(got, key = lambda i: i['Id']))
 
 
 if __name__ == '__main__':
-	pytest.main(['test.py', '-s'])
+	pytest.main(['app/test.py', '-s'])

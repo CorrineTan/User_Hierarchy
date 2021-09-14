@@ -1,6 +1,4 @@
-import user, role, usersHierarchy
-from user import User
-from role import Role
+from . import user, role, usersHierarchy
 import json
 from pathlib import Path
 import sys
@@ -69,14 +67,18 @@ if __name__ == "__main__":
 	hierarchy = process(args)
 
 	# Simple test here
+	print("Sample Test Below: ")
+	print("{:=^50s}".format("Split Line"))
 	print("Hierarchy for User 3: ")
 	res = hierarchy.getSubOrdinates(3)
 	print(res)
+	print("{:=^50s}".format("Split Line"))
 
 	print("Hierarchy for User 1: ")
 	res = hierarchy.getSubOrdinates(1)
 	print(res)
+	print("{:=^50s}".format("Split Line"))
 
-	print("Hierarchy for User 1: ")
+	print("Hierarchy for User 5: ")
 	res = hierarchy.getSubOrdinates(5)
 	print(res)

@@ -1,10 +1,7 @@
-import role, user
+from . import role, user
 import logging
-#from dataclassess import dataclass
 from dataclasses import dataclass
-import copy
-from role import Role
-from user import User
+
 @dataclass
 class Hierarchy:
 	"""
@@ -20,8 +17,8 @@ class Hierarchy:
 		Setter for roles. Convert json to list of role obejcts.
 		"""
 		role_objs = []
-		for role in roles:
-			role_obj = Role(id=role['Id'], name=role['Name'], parent=role['Parent'])
+		for role_elem in roles:
+			role_obj = role.Role(id=role_elem['Id'], name=role_elem['Name'], parent=role_elem['Parent'])
 			role_objs.append(role_obj)
 		self.roles = role_objs
 
@@ -31,8 +28,8 @@ class Hierarchy:
 		Setter for users. Convert json to list of user obejcts.
 		"""
 		user_objs = []
-		for user in users:
-			user_obj = User(id=user['Id'], name=user['Name'], role=user['Role'])
+		for user_elem in users:
+			user_obj = user.User(id=user_elem['Id'], name=user_elem['Name'], role=user_elem['Role'])
 			user_objs.append(user_obj)
 		self.users = user_objs
 
