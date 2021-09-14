@@ -103,5 +103,4 @@ Sample json file for users:
     "Role": 5
   }
 ]
----
 
