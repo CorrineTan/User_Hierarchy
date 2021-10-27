@@ -1,4 +1,4 @@
-# User Hierachy 
+# User Hierachy - Simple OOD Practice
 A user-role relationship tool for showing hiearchy of users and roles
 
 ![profile](images/profile.png "user-hierachy image")
